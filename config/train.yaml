@@ -1,0 +1,46 @@
+MODEL:
+  nms_size: 20
+  nms_thresh: 0.5
+
+  batch_size: 4
+  num_epoch: 150
+
+  device: cuda:0
+  load_pre_trained_model: false
+  pretrained_path: ./save/SuperRetina.pth
+
+  model_save_path: ./save/new_model.pth
+  model_save_epoch: 1
+
+DATASET:
+  model_image_width: 768
+  model_image_height: 768
+  dataset_path: ./data/Lab
+  train_split_file: eccv22_train.txt
+  val_split_file: eccv22_val.txt
+  auxiliary: ./data/Auxiliary
+
+PKE:
+  pke_start_epoch: 1  # the epoch to start PKE learn
+  geometric_thresh: 0.5
+  content_thresh: 0.7
+  gaussian_kernel_size: 13  # used to generate heatmap
+  gaussian_sigma: 2
+
+  pke_show: true
+  pke_show_epoch: 5
+  pke_show_list: []  # if pke_show_list == [], then randomly select one sample to show
+
+
+# value_map is used to record history learned points. The value of the position of the newly added keypoint will increase.
+VALUE_MAP:
+  area: 8  # if the neighbor of the keypoint have non-zero values, the values will increase by `value_increase_area`
+  value_increase_point: 5  # if the neighbor of the keypoint is all zero, the keypoint position's value will increase by `value_increase_point`
+  value_increase_area: 1
+  value_decay: 1  # if the history keypoints don't appear in this epoch, the correspoding value will decay
+  is_value_map_save: false  # if false, running in RAM, otherwise, the value map will store as a temp file in `value_map_save_dir`
+  value_map_save_dir: ./data/lab_values
+
+
+
+  

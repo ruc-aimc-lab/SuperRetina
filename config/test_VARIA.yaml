@@ -1,0 +1,12 @@
+PREDICT:
+  device: cuda:0
+  model_save_path: ./save/SuperRetina.pth
+  model_image_width: 512
+  model_image_height: 512
+  use_matching_trick: false
+
+  nms_size: 10
+  nms_thresh: 0.1
+
+  knn_thresh: 0.8
+  
