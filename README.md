@@ -50,7 +50,7 @@ If everything goes well, you shall see the following message on your screen:
 ----------------------------------------
 Failed:0.00%, Inaccurate:1.50%, Acceptable:98.50%
 ----------------------------------------
-S: 0.952, P: 0.552, A: 0.783, mAUC: 0.762
+S: 0.950, P: 0.554, A: 0.783, mAUC: 0.762
 ```
 
 #### Identity Verification Performance
@@ -62,7 +62,7 @@ python test_on_VARIA.py
 If everything goes well, you shall see the following message on your screen:
 ```
 VARIA DATASET
-EER: 0.00%, threshold: 53
+EER: 0.00%, threshold: 40
 ```
 
 ---

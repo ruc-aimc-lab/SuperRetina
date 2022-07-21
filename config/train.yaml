@@ -2,7 +2,7 @@ MODEL:
   nms_size: 20
   nms_thresh: 0.5
 
-  batch_size: 4
+  batch_size: 1
   num_epoch: 150
 
   device: cuda:0

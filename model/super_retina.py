@@ -265,12 +265,11 @@ class SuperRetina(nn.Module):
                 enhanced_label_pts_tmp = label_point_positions.clone()
                 enhanced_label_pts_tmp[learn_index] = enhanced_label_pts
                 enhanced_label_pts = enhanced_label_pts_tmp
-
+            if enhanced_label is not None:
                 enhanced_label_tmp = label_point_positions.clone()
                 enhanced_label_tmp[learn_index] = enhanced_label
                 enhanced_label = enhanced_label_tmp
 
-                assert enhanced_label.shape == enhanced_label_pts.shape
             detector_pred_copy = detector_pred.clone().detach()
             # if value_map_update is not None:
             #     # optimize descriptors of recorded points

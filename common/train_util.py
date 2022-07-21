@@ -34,8 +34,8 @@ def affine_images(images, used_for='detector'):
                                                           scale_ranges=[0.9, 1.35],
                                                           shears=None, img_size=[h, w])
         else:
-            affine_params = T.RandomAffine(20).get_params(degrees=[-10, 10], translate=[0.2, 0.2],
-                                                          scale_ranges=[0.95, 1.35],
+            affine_params = T.RandomAffine(20).get_params(degrees=[-3, 3], translate=[0.1, 0.1],
+                                                          scale_ranges=[0.9, 1.1],
                                                           shears=None, img_size=[h, w])
         angle = -affine_params[0] * math.pi / 180
         theta_ = torch.tensor([
