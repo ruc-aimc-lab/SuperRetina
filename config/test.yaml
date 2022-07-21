@@ -1,5 +1,5 @@
 PREDICT:
-  device: cuda:1
+  device: cuda:0
   model_save_path: ./save/SuperRetina.pth
   model_image_width: 768
   model_image_height: 768
