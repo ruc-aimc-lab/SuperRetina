@@ -1,5 +1,7 @@
 # SuperRetina for Retinal Image Matching
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/semi-supervised-keypoint-detector-and/image-registration-on-fire)](https://paperswithcode.com/sota/image-registration-on-fire?p=semi-supervised-keypoint-detector-and)
+
 This is the official source code of our ECCV2022 paper: [Semi-Supervised Keypoint Detector and Descriptor for Retinal Image Matching](https://arxiv.org/abs/2207.07932).
 
 ![illustration](./image/illustration.png)
