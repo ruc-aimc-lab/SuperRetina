@@ -202,7 +202,7 @@ class Predictor:
 
         if H_m is not None:
             h, w = self.image_height, self.image_width
-            query_align = cv2.warpPerspective(raw_query_image, H_m, (h, w), borderMode=cv2.BORDER_CONSTANT,
+            query_align = cv2.warpPerspective(raw_query_image, H_m, (w, h), borderMode=cv2.BORDER_CONSTANT,
                                               borderValue=(0))
 
             merged = np.zeros((h, w, 3), dtype=np.uint8)

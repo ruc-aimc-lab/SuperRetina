@@ -56,7 +56,7 @@ for pair_file in tqdm(match_pairs):
     if use_matching_trick:
         if H_m1 is not None:
             h, w = Pred.image_height, Pred.image_width
-            query_align_first = cv2.warpPerspective(query_image, H_m1, (h, w), borderMode=cv2.BORDER_CONSTANT,
+            query_align_first = cv2.warpPerspective(query_image, H_m1, (w, h), borderMode=cv2.BORDER_CONSTANT,
                                               borderValue=(0))
             query_align_first = query_align_first.astype(float)
             query_align_first /= 255.
