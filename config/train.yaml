@@ -1,8 +1,8 @@
 MODEL:
-  nms_size: 20
-  nms_thresh: 0.5
+  nms_size: 10
+  nms_thresh: 0.1
 
-  batch_size: 1
+  batch_size: 4
   num_epoch: 150
 
   device: cuda:0
@@ -21,7 +21,7 @@ DATASET:
   auxiliary: ./data/Auxiliary
 
 PKE:
-  pke_start_epoch: 1  # the epoch to start PKE learn
+  pke_start_epoch: 0  # the epoch to start PKE learn
   geometric_thresh: 0.5
   content_thresh: 0.7
   gaussian_kernel_size: 13  # used to generate heatmap

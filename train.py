@@ -59,8 +59,7 @@ dataloaders = {
         'val': DataLoader(val_set, batch_size=batch_size, shuffle=True, num_workers=8)
     }
 
-with torch.autograd.set_detect_anomaly(True):
-    model = train_model(model, optimizer, dataloaders, device, num_epochs=num_epoch, train_config=train_config)
+model = train_model(model, optimizer, dataloaders, device, num_epochs=num_epoch, train_config=train_config)
 
 
 

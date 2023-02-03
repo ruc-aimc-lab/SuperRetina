@@ -133,6 +133,7 @@ def pke_learn(detector_pred, descriptor_pred, grid_inverse, affine_detector_pred
         geo_points, affine_geo_points = geometric_filter(affine_detector_pred, points, affine_points,
                                                          geometric_thresh=geometric_thresh)
 
+
         # content matching
         content_points, affine_contend_points = content_filter(descriptor_pred, affine_descriptor_pred, geo_points,
                                                                affine_geo_points, content_thresh=content_thresh,
@@ -152,10 +153,15 @@ def pke_learn(detector_pred, descriptor_pred, grid_inverse, affine_detector_pred
 
             temp_label = torch.zeros([h, w]).to(detector_pred.device)
 
-            temp_label[final_points[:, 1], final_points[:, 0]] = 0.8
+            temp_label[final_points[:, 1], final_points[:, 0]] = 0.5
             temp_label[positions[:, 1], positions[:, 0]] = 1
-            enhanced_kps = nms(temp_label.unsqueeze(0).unsqueeze(0), nms_thresh, nms_size)[0]
-            number_pts += len(enhanced_kps) - len(positions)
+
+            enhanced_kps = nms(temp_label.unsqueeze(0).unsqueeze(0), 0.1, 10)[0]
+            if len(enhanced_kps) < len(positions):
+                enhanced_kps = positions
+            # print(len(final_points), len(positions), len(enhanced_kps))
+            number_pts += (len(enhanced_kps) - len(positions))
+            # number_pts += (len(enhanced_kps) - len(positions)) if (len(enhanced_kps) - len(positions)) > 0 else 0
 
             temp_label[:] = 0
             temp_label[enhanced_kps[:, 1], enhanced_kps[:, 0]] = 1

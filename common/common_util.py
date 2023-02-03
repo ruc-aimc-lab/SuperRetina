@@ -19,21 +19,24 @@ def remove_borders(keypoints, scores, border: int, height: int, width: int):
 
 
 def simple_nms(scores, nms_radius: int):
-    """ Fast Non-maximum suppression to remove nearby geo_points """
+    """ Fast Non-maximum suppression to remove nearby points """
     assert (nms_radius >= 0)
 
+    size = nms_radius * 2 + 1
+    avg_size = 2
     def max_pool(x):
-        return F.max_pool2d(
-            x, kernel_size=nms_radius * 2 + 1, stride=1, padding=nms_radius)
+        return torch.nn.functional.max_pool2d(
+            x, kernel_size=size, stride=1, padding=nms_radius)
 
     zeros = torch.zeros_like(scores)
+    # max_map = max_pool(scores)
+
     max_mask = scores == max_pool(scores)
-    for _ in range(2):
-        supp_mask = max_pool(max_mask.float()) > 0
-        supp_scores = torch.where(supp_mask, zeros, scores)
-        new_max_mask = supp_scores == max_pool(supp_scores)
-        max_mask = max_mask | (new_max_mask & (~supp_mask))
-    return torch.where(max_mask, scores, zeros)
+    max_mask_ = torch.rand(max_mask.shape).to(max_mask.device) / 10
+    max_mask_[~max_mask] = 0
+    mask = ((max_mask_ == max_pool(max_mask_)) & (max_mask_ > 0))
+
+    return torch.where(mask, scores, zeros)
 
 
 def pre_processing(data):
