@@ -40,7 +40,7 @@ Auxiliary/
 ```
 + The `Annotations` folder contains keypoint annotations per image. The folder is optional for unlabeled data. A sample annotation file is given as [samples/vistel0_left_0.txt](samples/vistel0_left_0.txt). See the [tutorial code](../notebooks/read_keypoint_labels.ipynb) that explains how the keypoint annotations shall be stored and loaded.
 + The `ImageData` folder contains all image files.
-+ The `ImageSets` folder contains image-id files that specify data split.
++ The `ImageSets` folder contains image-id files that specify data split. See [eccv22_train.txt](./Lab/ImageSets/eccv22_train.txt), [eccv22_val.txt](./Lab/ImageSets/eccv22_val.txt) and [lab.txt](./Lab/ImageSets/lab.txt)
 
 ### Test data
 The file organizations are as follows:
